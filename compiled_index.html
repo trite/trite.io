@@ -1,0 +1,78 @@
+<html>
+
+    <head>
+        <link rel="stylesheet" href="styles.css" />
+
+        <!-- to use google roboto mono google font: -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
+    </head>
+
+    <body>
+        <div class="header-title-bar">
+            <div class="header-title-name">
+                trite.io
+            </div>
+            <div class="header-title-desc">
+                My notes, configs, blog posts, and whatever else
+            </div>
+        </div>
+        <div class="header-navbar">
+            <ul>
+                <li><a href="notes.html">Notes</a></li>
+                | <li><a href="configs.html">Configs</a></li>
+                | <li><a href="posts.html">Blog Posts</a></li>
+            </ul>
+        </div>
+
+        <div class="post-info-block">
+
+            <div class="post-info-title">
+                Adventures in static type checked Python!
+            </div>
+
+            <div class="post-info-created">
+                created: 2022-01-18
+            </div>
+
+        </div>
+
+        <div class="content-body">
+            <p>Coming back to Python this weekend for a job interview has gone from fun nostalgia to full-blown learning adventure. I haven't touched Python much in the last 3 years. My recent time has been spent heavily focusing on Functional Programming concepts, lots of Haskell and F#.</p>
+<p>These are some notes and things of interest.</p>
+<h1>Type Checker -- MyPy vs Pyright vs Pytype vs Pyre</h1>
+<p><a href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a> gave Python support for static type checking. This is of course an opt-in feature, since Python's default type system is ~~dynamic~~ <a href="https://en.wikipedia.org/wiki/Duck_typing">duck</a> <em>(quack)</em>. After several hours and 3 <a href="https://adventofcode.com/">advent of code</a> problems I sat down and started looking at what would be involved.</p>
+<p>It's really quite easy to get setup with either MyPy or Pyright. Pytype and Pyre are on the list to check out eventually.</p>
+<h2>MyPy</h2>
+<p>http://mypy-lang.org/</p>
+<p>Started to check out MyPy briefly, but the pattern matching added in Python 3.10 was not yet supported by it. This cut things pretty short.</p>
+<h2>Pyright/Pylance</h2>
+<p>Pyright appears to be Microsoft's stab at type checking, while Pytype and Pyre look to be Google and Facebook's respectively:
+* https://github.com/microsoft/pyright
+* https://github.com/google/pytype
+* https://github.com/facebook/pyre-check</p>
+<p>Pylance is a VSCode extension providing lots of intellisense QoL and other neat features for developing Python:
+https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance</p>
+<h3>Activating typechecking in Pylance:</h3>
+<ul>
+<li>Open the settings ui (command pallette -&gt; <code>Preferences: Open Settings(UI)</code>)</li>
+<li>Search for <code>typeCheckingMode</code></li>
+<li>Change <code>Python &gt; Analysis: Type Checking Mode</code> to your preferred level, I'm using <code>strict</code></li>
+</ul>
+<p>Once activated you'll either be greeted by basically nothing changing if your code is already compliant, or by a spectacular wall of errors and warnings to fix. The wall of errors version is intimidating at first, but it should require considerably fewer code changes than it seems. Most of those changes are likely just type annotations, not modifying actual code behavior.</p>
+<h1>TODO: expand on these later</h1>
+<ul>
+<li>Use subclassing/inheritance, not type aliasing, to keep similar types in order</li>
+<li>Python not only has the concept of algebraic sum types (union, discriminated union, etc) but added FP style support for expressing them using pipes (<code>|</code>) instead of the Union[a,b,c] style. https://www.python.org/dev/peps/pep-0604/</li>
+<li>@dataclass decorator for quick/easy type guarantees</li>
+<li>TypeVar to declare generic types, has no purpose other than type checking https://docs.python.org/3/library/typing.html#typing.TypeVar</li>
+<li>Expand on this post: https://ncik-roberts.github.io/posts/pep622.html</li>
+<li>Looks like Python treats the pipe in pattern matching as fully separating patterns, meaning each must implement the same guard if they all want to use it.</li>
+<li>A better approach for this might be to remove the guard from the pattern matching portion of the code and add a direct if into the execution portion, then all guards should follow it. Need to mess around with this.</li>
+</ul>
+        </div>
+
+    </body>
+
+</html>

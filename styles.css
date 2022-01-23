@@ -1,19 +1,12 @@
 html {
-    margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-    align-items: center;
-    justify-items: center;
     margin: auto;
 }
 
 body {
     min-height: 100vh;
     max-width: 70vw;
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
-    align-items: center;
     font-family: 'Roboto Mono', monospace;
     margin: auto;
     box-sizing: border-box;
@@ -22,12 +15,11 @@ body {
 }
 
 .header-title-bar {
-    padding: 50px;
+    padding: 25px;
     font-size: 60px;
     font-weight: bold;
     color: #da2;
     text-align: center;
-    border-bottom: 1px solid #eee;
 }
 
 .header-title-name {
@@ -71,4 +63,19 @@ body {
 .header-navbar ul li a {
     text-decoration: none;
     color: #ad2;
+}
+
+.post-info-block {
+    margin: auto;
+    width: fit-content;
+    padding: 10px;
+}
+
+.post-info-title {
+    font-size: 40px;
+}
+
+.post-info-created {
+    margin: auto;
+    width: fit-content;
 }
